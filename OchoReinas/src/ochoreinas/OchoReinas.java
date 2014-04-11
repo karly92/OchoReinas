@@ -27,71 +27,72 @@ public class OchoReinas {
                
     public boolean esPosibleColocar(int tablero[][],int fila,int col){
                 
-    int f,c;
+    	int f,c;
             
             
-    for(c = 0 ; c < col; c++){
-        if(tablero[fila][c] == 1){
-            return false;
-        }
-    }
+    	for(c = 0 ; c < col; c++){
+        	if(tablero[fila][c] == 1){
+            		return false;
+        	}
+    	}
                     
-    for( f = fila , c = col; f >= 0 && c >= 0; f--, c--){    
-        if(tablero[f][c] == 1) 
-            return false;
-    }
+	for( f = fila , c = col; f >= 0 && c >= 0; f--, c--){    
+        	if(tablero[f][c] == 1) 
+            		return false;
+    	}
           
-    for(f = fila, c = col; c >= 0 && f < tablero.length; f++, c--){
-        if (tablero[f][c] == 1)
-            return false;
-    }
+    	for(f = fila, c = col; c >= 0 && f < tablero.length; f++, c--){
+        	if (tablero[f][c] == 1)
+            		return false;
+    	}
     
-  return true;
+     return true;
 		
   }
        
   public boolean colocarReina(int tablero[][], int col){
             
             
-    if(col >= tablero.length)
-        return true;
+    	if(col >= tablero.length)
+        	return true;
             
-    for(int i = 0; i < tablero.length; i++){
-        
-        if(esPosibleColocar(tablero,i,col)){
-            tablero[i][col] = 1;
+    	for(int i = 0; i < tablero.length; i++){
+        	
+        	if(esPosibleColocar(tablero,i,col)){
+            		tablero[i][col] = 1;
 
-            if(colocarReina(tablero,col+1))
-                return true;
+            	if(colocarReina(tablero,col+1))
+                	return true;
          
-            tablero[i][col] = 0;
+            	tablero[i][col] = 0;
         
-        }
+		}
         
-    }
+    	}
     
   return false;
   
   }
         
   public static void main(String[] args){
-    OchoReinas r = new OchoReinas();
+    	OchoReinas r = new OchoReinas();
     
-    int tablero[][] = {
-      {0,0,0,0,0,0,0,0},
-      {0,0,0,0,0,0,0,0},
-      {0,0,0,0,0,0,0,0},
-      {0,0,0,0,0,0,0,0},
-      {0,0,0,0,0,0,0,0},
-      {0,0,0,0,0,0,0,0},
-      {0,0,0,0,0,0,0,0},
-      {0,0,0,0,0,0,0,0}
-    };
+    	int tablero[][] = {
+      	{0,0,0,0,0,0,0,0},
+      	{0,0,0,0,0,0,0,0},
+      	{0,0,0,0,0,0,0,0},
+      	{0,0,0,0,0,0,0,0},
+      	{0,0,0,0,0,0,0,0},
+      	{0,0,0,0,0,0,0,0},
+      	{0,0,0,0,0,0,0,0},
+      	{0,0,0,0,0,0,0,0}
+    	};
     
-    if(!r.colocarReina(tablero,0)){
-      System.out.println("No hay solución");
-    }
+    	if(!r.colocarReina(tablero,0)){
+      		System.out.println("No hay solución");
+    	}
     
-    r.imprimeTablero(tablero); 
+    	r.imprimeTablero(tablero); 
   }
+  
 } 
